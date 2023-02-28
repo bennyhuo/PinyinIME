@@ -47,6 +47,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -1206,7 +1207,18 @@ public class PinyinIME extends InputMethodService {
         builder.setIcon(R.drawable.app_icon);
         builder.setNegativeButton(android.R.string.cancel, null);
         CharSequence itemSettings = getString(R.string.ime_settings_activity_name);
-        CharSequence itemInputMethod = getString(com.android.internal.R.string.inputMethod);
+        CharSequence itemInputMethod;
+        try {
+            Class cls = Class.forName("com.android.internal.R$string");
+            Field field = cls.getField("inputMethod");
+            field.setAccessible(true);
+            Integer id = (Integer) field.get(null);
+            itemInputMethod = getString(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            itemInputMethod = "";
+        }
+
         builder.setItems(new CharSequence[] {itemSettings, itemInputMethod},
                 new DialogInterface.OnClickListener() {
 
@@ -1217,7 +1229,7 @@ public class PinyinIME extends InputMethodService {
                             launchSettings();
                             break;
                         case 1:
-                            InputMethodManager.getInstance()
+                            ((InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE))
                                     .showInputMethodPicker();
                             break;
                         }

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 android {
     // 和 libs/android.jar 保持一致
-    compileSdkVersion 25
+    compileSdkVersion 31
     buildToolsVersion "26.0.2"
 
     aaptOptions {
@@ -10,8 +10,7 @@ android {
 
     defaultConfig {
         minSdkVersion 14
-        // 和 libs/android.jar 保持一致
-        targetSdkVersion 25
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0.0"
         applicationId "com.android.inputmethod.pinyin"
@@ -43,8 +42,4 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-}
-
-dependencies {
-    provided files('libs/android.jar')
 }

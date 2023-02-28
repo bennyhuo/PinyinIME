@@ -1,6 +1,8 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
+set (CMAKE_CXX_STANDARD 98)
+
 add_library(jni_pinyinime SHARED
             android/com_android_inputmethod_pinyin_PinyinDecoderService.cpp
            	share/dictbuilder.cpp

@@ -36,7 +36,8 @@
 
             <service android:name=".PinyinIME"
                 android:label="@string/ime_name"
-                    android:permission="android.permission.BIND_INPUT_METHOD">
+                    android:permission="android.permission.BIND_INPUT_METHOD"
+                android:exported="true">
                 <intent-filter>
                     <action android:name="android.view.InputMethod" />
                 </intent-filter>
@@ -44,7 +45,8 @@
             </service>
 
             <activity android:name=".SettingsActivity"
-                android:label="@string/ime_settings_activity_name">
+                android:label="@string/ime_settings_activity_name"
+                android:exported="true">
                 <intent-filter>
                     <action android:name="android.intent.action.MAIN"/>
                     <category android:name="android.intent.category.LAUNCHER" />

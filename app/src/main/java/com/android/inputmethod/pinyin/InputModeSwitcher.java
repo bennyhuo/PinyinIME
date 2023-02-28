@@ -16,10 +16,10 @@
 
 package com.android.inputmethod.pinyin;
 
-import com.android.inputmethod.pinyin.SoftKeyboard.KeyRow;
-
 import android.content.res.Resources;
 import android.view.inputmethod.EditorInfo;
+
+import com.android.inputmethod.pinyin.SoftKeyboard.KeyRow;
 
 /**
  * Switcher used to switching input mode between Chinese, English, symbol,etc.
